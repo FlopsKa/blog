@@ -1,4 +1,5 @@
 title: flopska.com/blog
 markdown: rdiscount
 pygments: true
-url: http://localhost:4000/
+url: http://flopska.com/blog
+baseurl: blog
