@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>{{ page.title }}</title>
+  <link rel="stylesheet" href="/css/style.css" type="text/css">
+  <link rel="stylesheet" href="/css/normalize.css" type="text/css">
+	<link href="//fonts.googleapis.com/css?family=Droid+Sans:400,700" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+  <div id="wrap">
+    <div id="header">
+			<h1 class="title"><a href="{{ site.url }}">flopska.com/blog</a></h1>
+
+      <h2>'cause I can't change the ns-record</h2>
+
+    </div>
+
+    <div class="container">
+
+			{{ content }}
+
+      <div id="push"></div>
+    </div>
+  </div>
+
+  <div id="footer">
+    <div class="container">
+      <p class="text-right"><small>I am on <a href="https://github.com/flopska">GitHub</a> and on <a href="https://twitter.com/flopska">Twitter</a> &#169; Copyright 2014.</small></p>
+    </div>
+  </div>
+</body>
+</html>

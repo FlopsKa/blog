@@ -1,0 +1,4 @@
+title: flopska.com/blog
+markdown: rdiscount
+pygments: true
+url: http://localhost:4000/
