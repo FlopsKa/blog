@@ -3,8 +3,6 @@ layout: post
 title: Getting started with vagrant and ansible
 ---
 
-<h3>{{ page.title }}</h3>
-
 [vagrant](http://vagrantup.com) is a tool to create and configure reproducible
 development environments. As a developer you don't have to care about your
 dependencies and how you can keep the environment the team runs your code in
@@ -12,7 +10,7 @@ consistent. Team member designing the frontend don't have to care about the
 setup of your product and can focus on the design instead.
 
 
-#### Why is this cool? ####
+### Why is this cool? ####
 
 Imagine you are deploying a webapp on a LAMPP stack. Every team member needs:
 

@@ -3,8 +3,6 @@ layout: post
 title: Speedup Vagrant Execution With a Ramdisk
 ---
 
-<h3>{{ page.title }}</h3>
-
 Currently I am using [vagrant](http://www.vagrantup.com/) in conjunction with
 [ansible](http://www.vagrantup.com/) to provide all team members of our
 university project with a consistent development and testing environment.
@@ -18,15 +16,17 @@ the bottleneck when running the machines often lies within the HDD I thought it
 would be nice to speed it up a bit by putting the virtual machines on a
 ramdisk.
 
-#### Setting up the ramdisk ####
+### Setting up the ramdisk ####
 
 In ubuntu 13.10 'saucy' it is rather simple to set up a ramdisk:
 
-    sudo mkdir /media/ramdisk
-    sudo mount -t ramfs ramfs /media/ramdisk
-		sudo chown -R user:group /media/ramdisk
+~~~bash
+sudo mkdir /media/ramdisk
+sudo mount -t ramfs ramfs /media/ramdisk
+sudo chown -R user:group /media/ramdisk
+~~~
 
-__Note:__ Please don't store any important information on the ramdisk as the
+> __Note:__ Please don't store any important information on the ramdisk as the
 data is lost when powering off the computer.
 
 To automatically mount the partition when booting add this to your
@@ -37,7 +37,7 @@ To automatically mount the partition when booting add this to your
 It is not possible to limit the size of the ramdisk. In extreme cases the host
 system may run out of memory. 
 
-#### Moving vagrant and virtualbox into the RAM ####
+### Moving vagrant and virtualbox into the RAM ####
 
 Vagrant usually stores it's files in `~/.vagrant.d/`. To use another path set
 the VAGRANT_HOME environment variable.
@@ -50,7 +50,7 @@ virtualbox. Open the client by entering `virtualbox` into the terminal, go to
 'File -> Preferences...' and enter your new ramdisk location as 'Default
 Machine Folder'.
 
-#### Performance improvements ####
+### Performance improvements ####
 
 _All tests were run with a new Vagrantfile and a 'raring64' box._
 
