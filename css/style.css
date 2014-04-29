@@ -364,9 +364,6 @@ th {
  * GitHub style for Pygments syntax highlighter, for use with Jekyll
  * Courtesy of GitHub.com
  */
-.highlight pre, pre, .highlight .hll {
-  padding: 6px 10px; }
-
 .highlight .c {
   color: #999988;
   font-style: italic; }
@@ -577,6 +574,10 @@ pre {
   -webkit-transition: margin 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-left 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-right 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-radius 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   -moz-transition: margin 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-left 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-right 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-radius 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
   transition: margin 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-left 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-right 0.2s cubic-bezier(0.455, 0.03, 0.515, 0.955), border-radius 0.3s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-top: 0;
+  padding-bottom: 0;
   margin-left: -15px;
   margin-right: -15px;
   margin-top: 2em;
@@ -591,6 +592,7 @@ pre {
     pre {
       border: 1px solid #ccc;
       border-radius: 3px;
+      padding: 6px 10px;
       margin-left: 0;
       margin-right: 0;
       margin-top: 2em;
