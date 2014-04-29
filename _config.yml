@@ -1,5 +1,24 @@
 title: flopska.com/blog
+about: "I am flopska, I am a developer, and avid climber. I love to write code in ruby and PHP. I eat wurst and make fun of Saschens."
+twitterurl: "https://twitter.com/flopska"
+githuburl: "https://github.com/flopska"
+
 markdown: rdiscount
 pygments: true
-url: http://flopska.com/blog
-baseurl: blog
+
+baseurl: 
+# baseurl: /flopska
+# baseurl: /blog
+
+relative_permalinks: true
+permalink:   /:year/:title/
+host:        0.0.0.0
+port:        4000
+url:         http://localhost:4000
+# url: http://flopska.com/blog
+
+
+
+exclude: ['*.scss', 'config.codekit', 'gemfile', 'Gemfile.lock', 'Guardfile', 'vendor', 'css/bourbon', 'css/neat' ]
+
+highlighter: pygments
