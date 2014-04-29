@@ -6,8 +6,8 @@ githuburl: "https://github.com/flopska"
 markdown: rdiscount
 pygments: true
 
-baseurl: 
-# baseurl: /blog
+# baseurl: 
+baseurl: /blog
 
 relative_permalinks: true
 permalink:   /:year/:title/
