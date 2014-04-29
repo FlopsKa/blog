@@ -13,3 +13,9 @@ site/_site/
 coverage
 .ruby-version
 .sass-cache
+.gitignore
+config.codekit
+/vendor/bundle
+*.scss
+Guardfile
+gemfile
