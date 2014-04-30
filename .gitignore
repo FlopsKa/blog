@@ -19,3 +19,5 @@ config.codekit
 *.scss
 Guardfile
 gemfile
+_posts/*
+_drafts/*
