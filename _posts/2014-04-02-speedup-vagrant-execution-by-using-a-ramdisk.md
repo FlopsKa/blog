@@ -18,7 +18,7 @@ ramdisk.
 
 ### Setting up the ramdisk ####
 
-In ubuntu 13.10 'saucy' it is rather simple to set up a ramdisk:
+In Ubuntu 13.10 'saucy' it is rather simple to set up a ramdisk:
 
 ~~~bash
 sudo mkdir /media/ramdisk
@@ -54,13 +54,13 @@ Machine Folder'.
 
 _All tests were run with a new Vagrantfile and a 'raring64' box._
 
-Startup time without ramdisk:
+Start up time without ramdisk:
 
     time vagrant up
     ...
     vagrant up  2,63s user 1,99s system 12% cpu 35,825 total
 
-Startup time with ramdisk:
+Start up time with ramdisk:
 
     time vagrant up
     ...
