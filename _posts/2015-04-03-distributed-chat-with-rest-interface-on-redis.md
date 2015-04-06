@@ -77,8 +77,8 @@ Das Senden einer Nachricht setzt voraus, dass der Benutzer sich vorher authorisi
 
 Zum Lesen von Nachrichten ist keine Authentifizierung erforderlich. _readMessages_ liefert alle auf dem Server gespeicherten Nachrichten zurück.
 
-### Hardware Architektur ###
-![Die Hardware Architektur]({{ site.url }}/assets/chat_architecture.png)
+### Hardware ###
+<img src="{{ site.url }}/assets/chat_architecture.png" alt="Die Hardware Architektur" style="width: 200px;"/>
 
 Der Chat verwendet die klassische Architektur für Webapplikationen: Die Anfragen der Nutzer werden von einem Load Balancer entgegen genommen und auf die Web Server verteilt. Soll eine größere Last verarbeitet werden, können weitere Web Server hinzugefügt werden. Die Authentifizierungsinformationen für Benutzer sind clientseitig in Cookies und serverseitig in der Datenbank gespeichert. Somit hält die Webapplikation keinen State: Fällt ein Server aus routet der Load Balancer die Anfragen an einen anderen Server und der Benutzer bemerkt nichts vom Ausfall eines Servers.
 
