@@ -3,13 +3,13 @@ layout: post
 title: Redis Cluster als Basis für einen verteilten Chat
 ---
 
-- Anforderungen
-- Software Stack
-- Architektur
-- Hardware Architektur
-- Ausblick
+- [Anforderungen](#anforderungen)
+- [Software Stack](#stack)
+- [Software Architektur](#softwarearchitektur)
+- [Hardware Architektur](#hardwareachitektur)
+- [Ausblick](#ausblick)
 
-### Anforderungen ###
+### Anforderungen <a id="anforderungen" />###
 
 - mehrere Clients pro Benutzer
 - Integrationstest des Servers als Slim Client
@@ -23,7 +23,7 @@ title: Redis Cluster als Basis für einen verteilten Chat
 - alle schreiben an alle (ein "chatroom", broadcast)
 - Login mit E-Mail und Password
 
-### Software Stack ###
+### Software Stack <a id="stack" />###
 
 - [redis](http://redis.io/) wird als zentrale Datenbank für die Benutzer und die gesendeten Nachrichten verwendet. Mit redis 3.0.0 ist clustering und somit der verteilte Einsatz in den _stable_-Branch gekommen.
 - [jedis](https://github.com/xetorthio/jedis) ist das empfohlene Java Interface für die Kommunikation mit redis.
@@ -32,7 +32,7 @@ title: Redis Cluster als Basis für einen verteilten Chat
 - [hamcrest](http://hamcrest.org/JavaHamcrest/)
 - [lombok](http://projectlombok.org/)
 
-### Aufbau ###
+### Software Architektur <a id="softwarearchitektur" />###
 
 Mit restlet werden zwei Endpunkte für Anfragen zur Verfügung gestellt:
 
@@ -77,9 +77,13 @@ Das Senden einer Nachricht setzt voraus, dass der Benutzer sich vorher authorisi
 
 Zum Lesen von Nachrichten ist keine Authentifizierung erforderlich. _readMessages_ liefert alle auf dem Server gespeicherten Nachrichten zurück.
 
-### Hardware ###
-<img src="{{ site.url }}/assets/chat_architecture.png" alt="Die Hardware Architektur" style="width: 200px;"/>
+### Hardware Architektur <a id="hardwarearchitektur" />###
+<img src="{{ site.url }}/assets/chat_architecture.png" alt="Die Hardware Architektur" style="width: 300px;"/>
 
 Der Chat verwendet die klassische Architektur für Webapplikationen: Die Anfragen der Nutzer werden von einem Load Balancer entgegen genommen und auf die Web Server verteilt. Soll eine größere Last verarbeitet werden, können weitere Web Server hinzugefügt werden. Die Authentifizierungsinformationen für Benutzer sind clientseitig in Cookies und serverseitig in der Datenbank gespeichert. Somit hält die Webapplikation keinen State: Fällt ein Server aus routet der Load Balancer die Anfragen an einen anderen Server und der Benutzer bemerkt nichts vom Ausfall eines Servers.
 
-### Ausblick ###
+redis cluster hat einen Failover Mechanismus eingebaut: Beim Ausfall eines Masters wird automatisch ein bestehender Slave zum Master. In der verwendeten Konfiguration können also im Besten Fall bis zu drei Datenbankserver ausfallen.
+
+### Ausblick <a id="ausblick" />###
+
+In der oben beschriebenen Konfiguration ist der Load Balancer ein Single Point of Failure. Eine Möglichkeit auf den Ausfall des Load Balancers zu reagieren ist der Einsatz von sogenannten _Elastic IP Addresses_ (siehe [Elastic IP Addresses bei AWS](http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)). Fällt der Load Balancer aus kann seine IP zeitnah einem parallel laufenden Load Balancer zugewiesen werden.
