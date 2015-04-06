@@ -6,8 +6,7 @@ title: Redis Cluster als Basis für einen verteilten Chat
 - Anforderungen
 - Software Stack
 - Architektur
-- Hardware Konfiguration
-- Architektur
+- Hardware Architektur
 - Ausblick
 
 ### Anforderungen ###
@@ -58,7 +57,7 @@ public interface RESTUser {
 
 Mit der _createUser(ChatUser chatUser)_ Methode kann ein neuer Benutzer am System registriert werden. Die E-Mail Adresse ist dabei eindeutig, d.h. es kann pro E-Mail Adresse nur einen Benutzer im System geben. Wird der Nutzer angelegt enthält der Rückgabewert die generierte ID und den Authentifizierungsschlüssel des neuen Benutzers.
 
-Die _login(ChatUser chatUser)_ Methode wird zum einloggen eines Benutzers verwendet. Der Benutzername und das Passwort werden überprüft und bei einer Übereinstimmung wird der entsprechende Authentifizierungsschlüssel als Cookie zurückgegeben. Bei einem Fehler sendet der Server ein HTTP Status _401_.
+Die _login(ChatUser chatUser)_ Methode wird zum Einloggen eines Benutzers verwendet. Der Benutzername und das Passwort werden überprüft und bei einer Übereinstimmung wird der entsprechende Authentifizierungsschlüssel als Cookie zurückgegeben. Bei einem Fehler sendet der Server ein HTTP Status _401_.
 
 #### /message/ ####
 
@@ -78,8 +77,9 @@ Das Senden einer Nachricht setzt voraus, dass der Benutzer sich vorher authorisi
 
 Zum Lesen von Nachrichten ist keine Authentifizierung erforderlich. _readMessages_ liefert alle auf dem Server gespeicherten Nachrichten zurück.
 
-### Hardware Konfiguration ###
+### Hardware Architektur ###
+![Die Hardware Architektur]({{ site.url }}/assets/chat_architecture.png)
 
-### Architektur ###
+Der Chat verwendet die klassische Architektur für Webapplikationen: Die Anfragen der Nutzer werden von einem Load Balancer entgegen genommen und auf die Web Server verteilt. Soll eine größere Last verarbeitet werden, können weitere Web Server hinzugefügt werden. Die Authentifizierungsinformationen für Benutzer sind clientseitig in Cookies und serverseitig in der Datenbank gespeichert. Somit hält die Webapplikation keinen State: Fällt ein Server aus routet der Load Balancer die Anfragen an einen anderen Server und der Benutzer bemerkt nichts vom Ausfall eines Servers.
 
 ### Ausblick ###
